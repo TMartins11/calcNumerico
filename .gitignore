@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambientes virtuais
+venv/
+.env/
+
+# VSCode
+.vscode/
+
+# Jupyter (se usar)
+.ipynb_checkpoints/
+
+# Arquivos gerados
+*.pdf
+*.png
+*.jpg
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
