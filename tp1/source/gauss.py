@@ -10,14 +10,14 @@ def gauss(A, b):
     n = len(b)
 
     for k in range(n - 1):
-        # Pivoteamento parcial: busca maior |a_ik| abaixo da linha k
+        # pivoteamento parcial: busca maior |a_ik| abaixo da linha k
         p = np.argmax(np.abs(A[k:, k])) + k
         
-        # Troca de linhas
+        # troca de linhas
         A[[k, p]] = A[[p, k]]
         b[[k, p]] = b[[p, k]]
 
-        # 🔴 DETECÇÃO DE SINGULARIDADE
+        # detecção de singularidade
         if abs(A[k, k]) < 1e-12:
             raise ValueError("Matriz singular ou quase singular (pivô ~ 0)")
 
@@ -26,7 +26,7 @@ def gauss(A, b):
             A[i, k:] -= m * A[k, k:]
             b[i] -= m * b[k]
 
-    # 🔴 Checagem do último pivô
+    # checagem do último pivô
     if abs(A[n-1, n-1]) < 1e-12:
         raise ValueError("Matriz singular ou quase singular (pivô final ~ 0)")
 
