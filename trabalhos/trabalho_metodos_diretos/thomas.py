@@ -1,9 +1,18 @@
+# ==================================================================================
+# thomas.py
+# ==================================================================================
+# Plano de Investigação Computacional
+# Sistemas de Equações Lineares: Métodos Diretos em Python
+# ==================================================================================
+# Disciplina: Cálculo Numérico
+# Professora: Angela Leite Moreno
+# Aluno 1: Jeann Victor Batista  R.A = 2024.1.08.014 
+# ==================================================================================
+
 import numpy as np
 
-
 def thomas(a, b, c, d):
-    """
-    Resolve sistema tridiagonal pelo Algoritmo de Thomas.
+    """Resolve sistema tridiagonal pelo Algoritmo de Thomas.
 
     Parâmetros
     ----------
@@ -17,7 +26,6 @@ def thomas(a, b, c, d):
     x : vetor solução (comprimento n)
     """
     n = len(b)
-
     # Cópias para não modificar os vetores originais
     b = np.array(b, dtype=float)
     c = np.array(c, dtype=float)
@@ -32,7 +40,6 @@ def thomas(a, b, c, d):
     # Substituição retroativa
     x = np.zeros(n)
     x[-1] = d[-1] / b[-1]
-
     for k in range(n - 2, -1, -1):
         x[k] = (d[k] - c[k] * x[k + 1]) / b[k]
 
@@ -40,9 +47,7 @@ def thomas(a, b, c, d):
 
 
 def montar_tridiagonal(a, b, c):
-    """
-    Constrói matriz densa a partir das diagonais (para verificação).
-    """
+    """Constrói matriz densa a partir das diagonais (para verificação)."""
     n = len(b)
     A = np.diag(b) + np.diag(a, -1) + np.diag(c, 1)
     return A
